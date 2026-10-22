@@ -1,0 +1,130 @@
+@prefix :         <https://w3id.org/FAIR-course-UT/2026/group15/metadata-schema#> .
+@prefix sh:       <http://www.w3.org/ns/shacl#> .
+@prefix dash:     <http://datashapes.org/dash#> .
+@prefix dcat:     <http://www.w3.org/ns/dcat#> .
+@prefix dct:      <http://purl.org/dc/terms/> .
+@prefix prov:     <http://www.w3.org/ns/prov#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+:DatasetShape a sh:NodeShape ;
+    sh:targetClass dcat:Dataset ;
+
+    sh:property [
+        sh:path dct:issued ;
+        sh:name "Issued" ;
+        sh:description "Date of formal issuance (publication) of the dataset." ;
+        sh:datatype xsd:dateTime ;
+        sh:maxCount 1 ;
+        dash:editor dash:DatePickerEditor ;
+        dash:viewer dash:LiteralViewer ;
+    ] , [
+        sh:path dct:modified ;
+        sh:name "Modified" ;
+        sh:description "Most recent date on which the dataset was changed." ;
+        sh:datatype xsd:dateTime ;
+        sh:maxCount 1 ;
+        dash:editor dash:DatePickerEditor ;
+        dash:viewer dash:LiteralViewer ;
+    ] , [
+        sh:path dcat:theme ;
+        sh:name "Theme" ;
+        sh:description "Main category of the dataset (use the EU Data Theme vocabulary, e.g. SOCI = Population and society)." ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        dash:editor dash:URIEditor ;
+        dash:viewer dash:LabelViewer ;
+    ] , [
+        sh:path dcat:contactPoint ;
+        sh:name "Contact point" ;
+        sh:description "Who to contact about the dataset (mailto: IRI or ORCID)." ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        dash:editor dash:URIEditor ;
+        dash:viewer dash:LabelViewer ;
+    ] , [
+        sh:path dcat:keyword ;
+        sh:name "Keyword" ;
+        sh:description "Free-text keyword (one value per keyword)." ;
+        sh:nodeKind sh:Literal ;
+        sh:minCount 3 ;
+        dash:editor dash:TextFieldEditor ;
+        dash:viewer dash:LiteralViewer ;
+    ] , [
+        sh:path dcat:landingPage ;
+        sh:name "Landing page" ;
+        sh:description "Web page with documentation of the dataset (the GitHub repository)." ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+        dash:editor dash:URIEditor ;
+        dash:viewer dash:LabelViewer ;
+    ] ,
+
+    [   
+        sh:path dct:creator ;
+        sh:name "Creator" ;
+        sh:description "Person who created the FAIRified dataset (ORCID IRI preferred)." ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        dash:editor dash:URIEditor ;
+        dash:viewer dash:LabelViewer ;
+    ] , [
+        sh:path dct:spatial ;
+        sh:name "Spatial coverage" ;
+        sh:description "Country covered by the dataset, as a Wikidata or GeoNames IRI (one value per country)." ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        dash:editor dash:URIEditor ;
+        dash:viewer dash:LabelViewer ;
+    ] , [
+        sh:path dct:temporal ;
+        sh:name "Temporal coverage" ;
+        sh:description "Period covered by the reference years of the observations, as a time-interval IRI." ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        dash:editor dash:URIEditor ;
+        dash:viewer dash:URIViewer ;
+    ] , [
+        sh:path prov:wasDerivedFrom ;
+        sh:name "Derived from" ;
+        sh:description "The original (non-FAIR) dataset this dataset was derived from (the DataHub dataset)." ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        dash:editor dash:URIEditor ;
+        dash:viewer dash:URIViewer ;
+    ] , [
+        sh:path dct:source ;
+        sh:name "Source" ;
+        sh:description "Authoritative source of the statistics (UNdata / UN Statistics Division)." ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        dash:editor dash:URIEditor ;
+        dash:viewer dash:URIViewer ;
+    ] , [
+        sh:path dct:conformsTo ;
+        sh:name "Conforms to" ;
+        sh:description "Ontology / standard the dataset conforms to (our W3ID ontology IRI and the RDF Data Cube vocabulary)." ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        dash:editor dash:URIEditor ;
+        dash:viewer dash:URIViewer ;
+    ] , [
+        sh:path dct:accrualPeriodicity ;
+        sh:name "Update frequency" ;
+        sh:description "Frequency of updates (EU Frequency vocabulary IRI)." ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+        dash:editor dash:URIEditor ;
+        dash:viewer dash:LabelViewer ;
+    ] , [
+        sh:path dct:identifier ;
+        sh:name "Identifier" ;
+        sh:description "Persistent identifier (W3ID) of the FAIRified data." ;
+        sh:nodeKind sh:Literal ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:pattern "^https://w3id.org/" ;
+        dash:editor dash:TextFieldEditor ;
+        dash:viewer dash:LiteralViewer ;
+    ] .

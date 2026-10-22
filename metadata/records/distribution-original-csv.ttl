@@ -1,0 +1,52 @@
+# Metadata record exported from the FAIR Data Point (http://localhost:8085/distribution/5748bbe9-b6f9-48cb-a912-6cd6ac041936).
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+
+<https://www.utwente.nl/> a foaf:Agent;
+  foaf:name "University of Twente - FAIR Data Engineering course, Group 15" .
+
+<http://localhost:8085/distribution/5748bbe9-b6f9-48cb-a912-6cd6ac041936> a dcat:Resource,
+    dcat:Distribution;
+  <http://www.w3.org/2000/01/rdf-schema#label> "Benelux city population - original CSV";
+  dcterms:title "Benelux city population - original CSV"@en;
+  dcat:version "1.0.0";
+  <https://w3id.org/fdp/fdp-o#metadataIssued> "2026-10-12T01:44:22.370375981Z"^^xsd:dateTime;
+  <https://w3id.org/fdp/fdp-o#metadataModified> "2026-10-20T16:45:22.556630973Z"^^xsd:dateTime;
+  dcterms:license <https://opendatacommons.org/licenses/pddl/1-0/>;
+  dcterms:description "The original, non-FAIRified data: the 531 rows for Belgium, the Netherlands and Luxembourg from the DataHub dataset https://datahub.io/core/population-city (file unsd-citypopulation-year-both.csv, created by the UN Statistics Division), 11 columns, with DataHub's footnote codes replaced by their text. No value was changed. Kept for provenance and for users who prefer tabular data."@en;
+  dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc4180>, <http://localhost:8085/profile/02c649de-c579-43bb-b470-306abdc808c7>;
+  dcterms:language <http://id.loc.gov/vocabulary/iso639-1/en>;
+  <https://w3id.org/fdp/fdp-o#metadataIdentifier> <http://localhost:8085/distribution/5748bbe9-b6f9-48cb-a912-6cd6ac041936#identifier>;
+  dcterms:accessRights <http://localhost:8085/distribution/5748bbe9-b6f9-48cb-a912-6cd6ac041936#accessRights>;
+  dcterms:publisher <https://www.utwente.nl/>;
+  dcterms:isPartOf <http://localhost:8085/dataset/62eb8b52-83e1-4c63-a51e-20bc2c0fed59>;
+  <http://semanticscience.org/resource/SIO_000628> <http://localhost:8085/distribution/5748bbe9-b6f9-48cb-a912-6cd6ac041936/metrics/445c0a70d1e214e545b261559e2842f4>,
+    <http://localhost:8085/distribution/5748bbe9-b6f9-48cb-a912-6cd6ac041936/metrics/5d27e854a9e78eb3f663331cd47cdc13>;
+  dcterms:issued "2026-10-12T00:00:00Z"^^xsd:dateTime;
+  dcat:downloadURL <https://w3id.org/FAIR-course-UT/2026/group15/data/csv>;
+  dcat:accessURL <https://github.com/djactor/FAIRifaction-project/tree/main/data/original>;
+  dcat:mediaType "text/csv";
+  dcterms:format <http://publications.europa.eu/resource/authority/file-type/CSV>;
+  dcat:byteSize 81844.0 .
+
+<http://localhost:8085/distribution/5748bbe9-b6f9-48cb-a912-6cd6ac041936#identifier>
+  a <http://purl.org/spar/datacite/Identifier>;
+  dcterms:identifier "http://localhost:8085/distribution/5748bbe9-b6f9-48cb-a912-6cd6ac041936" .
+
+<http://localhost:8085/distribution/5748bbe9-b6f9-48cb-a912-6cd6ac041936#accessRights>
+  a dcterms:RightsStatement;
+  dcterms:description "This resource has no access restriction" .
+
+<http://localhost:8085/distribution/5748bbe9-b6f9-48cb-a912-6cd6ac041936/metrics/445c0a70d1e214e545b261559e2842f4>
+  <http://semanticscience.org/resource/SIO_000628> <https://www.ietf.org/rfc/rfc3986.txt>;
+  <http://semanticscience.org/resource/SIO_000332> <https://www.ietf.org/rfc/rfc3986.txt> .
+
+<http://localhost:8085/distribution/5748bbe9-b6f9-48cb-a912-6cd6ac041936/metrics/5d27e854a9e78eb3f663331cd47cdc13>
+  <http://semanticscience.org/resource/SIO_000628> <https://www.wikidata.org/wiki/Q8777>;
+  <http://semanticscience.org/resource/SIO_000332> <https://www.wikidata.org/wiki/Q8777> .
+
+<http://localhost:8085/profile/02c649de-c579-43bb-b470-306abdc808c7> <http://www.w3.org/2000/01/rdf-schema#label>
+    "Distribution Profile" .

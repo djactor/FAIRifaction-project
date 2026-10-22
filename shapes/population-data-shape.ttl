@@ -1,0 +1,71 @@
+@prefix sh:             <http://www.w3.org/ns/shacl#> .
+@prefix xsd:            <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:            <http://www.w3.org/2002/07/owl#> .
+@prefix schema:         <https://schema.org/> .
+@prefix qb:             <http://purl.org/linked-data/cube#> .
+@prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix sdmx-code:      <http://purl.org/linked-data/sdmx/2009/code#> .
+@prefix ont:            <https://w3id.org/FAIR-course-UT/2026/group15/ont#> .
+@prefix shp:            <https://w3id.org/FAIR-course-UT/2026/group15/shapes#> .
+
+
+shp:PopulationObservationShape
+    a sh:NodeShape ;
+    sh:targetClass ont:PopulationObservation ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^https://w3id.org/FAIR-course-UT/2026/group[^/]+/data#observation-[0-9]+$" ;
+    sh:property [
+        sh:path ont:city ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ont:City ;
+        sh:message "Every observation refers to exactly one city"@en ;
+    ] , [
+        sh:path ont:cityType ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:in ( ont:CityProper ont:UrbanAgglomeration ) ;
+    ] , [
+        sh:path ont:recordType ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:in ( ont:CensusDeJureCompleteTabulation ont:EstimateDeJure ) ;
+    ] , [
+        sh:path ont:reliability ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:in ( ont:FinalFigureComplete ont:ProvisionalFigure ) ;
+    ] , [
+        sh:path sdmx-dimension:refPeriod ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:datatype xsd:gYear ;
+    ] , [
+        sh:path sdmx-dimension:sex ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:hasValue sdmx-code:sex-T ;
+    ] , [
+        sh:path ont:population ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:datatype xsd:nonNegativeInteger ;
+        sh:minInclusive 1 ;
+        sh:message "Population must be a single positive integer"@en ;
+    ] , [
+        sh:path ont:sourceYear ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:datatype xsd:gYear ;
+    ] , [
+        sh:path ont:reportedCityName ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+    ] , [
+        sh:path ont:hasFootnote ; sh:maxCount 1 ; sh:class ont:Footnote ;
+    ] , [
+        sh:path ont:qualityNote ; sh:maxCount 1 ; sh:languageIn ( "en" ) ;
+    ] , [
+        sh:path qb:dataSet ; sh:minCount 1 ; sh:maxCount 1 ; sh:class qb:DataSet ;
+    ] .
+
+shp:CityShape
+    a sh:NodeShape ;
+    sh:targetClass ont:City ;
+    sh:property [
+        sh:path rdfs:label ; sh:minCount 1 ; sh:maxCount 1 ;
+    ] , [
+        sh:path schema:containedInPlace ; sh:minCount 1 ; sh:maxCount 1 ; sh:class schema:Country ;
+    ] , [
+        sh:path owl:sameAs ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:pattern "^http://www.wikidata.org/entity/Q[0-9]+$" ;
+        sh:severity sh:Warning ;
+    ] .
+
+shp:FootnoteShape
+    a sh:NodeShape ;
+    sh:targetClass ont:Footnote ;
+    sh:property [ sh:path rdfs:comment ; sh:minCount 1 ; sh:maxCount 1 ; sh:languageIn ( "en" ) ] .

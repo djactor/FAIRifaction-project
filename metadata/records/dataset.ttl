@@ -1,0 +1,71 @@
+# Metadata record exported from the FAIR Data Point (http://localhost:8085/dataset/62eb8b52-83e1-4c63-a51e-20bc2c0fed59).
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+
+<https://www.utwente.nl/> a foaf:Agent;
+  foaf:name "University of Twente - FAIR Data Engineering course, Group 15" .
+
+<http://localhost:8085/dataset/62eb8b52-83e1-4c63-a51e-20bc2c0fed59> a dcat:Resource,
+    dcat:Dataset;
+  <http://www.w3.org/2000/01/rdf-schema#label> "Benelux City Population 2000-2023 (FAIRified UNSD subset)";
+  dcterms:title "Benelux City Population 2000-2023 (FAIRified UNSD subset)"@en;
+  dcat:version "1.0.0";
+  <https://w3id.org/fdp/fdp-o#metadataIssued> "2026-10-12T01:44:16.947808632Z"^^xsd:dateTime;
+  <https://w3id.org/fdp/fdp-o#metadataModified> "2026-10-20T16:45:32.289114466Z"^^xsd:dateTime;
+  dcterms:license <https://opendatacommons.org/licenses/pddl/1-0/>;
+  dcterms:description "Yearly population of 46 cities in Belgium, the Netherlands and Luxembourg (city proper and urban agglomeration, both sexes), 2000-2023, obtained from DataHub (https://datahub.io/core/population-city), which republishes the UN Statistics Division Demographic Statistics, cleaned, reconciled with Wikidata and published as Linked Data with the RDF Data Cube vocabulary. 531 observations."@en;
+  dcterms:conformsTo <http://www.w3.org/TR/vocab-data-cube/>, <https://w3id.org/FAIR-course-UT/2026/group15/ont>,
+    <http://localhost:8085/profile/2f08228e-1789-40f8-84cd-28e3288c3604>;
+  dcterms:language <http://id.loc.gov/vocabulary/iso639-1/en>;
+  <https://w3id.org/fdp/fdp-o#metadataIdentifier> <http://localhost:8085/dataset/62eb8b52-83e1-4c63-a51e-20bc2c0fed59#identifier>;
+  dcterms:identifier "https://w3id.org/FAIR-course-UT/2026/group15/data";
+  dcterms:accessRights <http://localhost:8085/dataset/62eb8b52-83e1-4c63-a51e-20bc2c0fed59#accessRights>;
+  dcterms:publisher <https://www.utwente.nl/>;
+  dcterms:isPartOf <http://localhost:8085/catalog/bb28d837-e0b8-495a-abee-e4d215afda32>;
+  <http://semanticscience.org/resource/SIO_000628> <http://localhost:8085/dataset/62eb8b52-83e1-4c63-a51e-20bc2c0fed59/metrics/445c0a70d1e214e545b261559e2842f4>,
+    <http://localhost:8085/dataset/62eb8b52-83e1-4c63-a51e-20bc2c0fed59/metrics/5d27e854a9e78eb3f663331cd47cdc13>;
+  dcterms:issued "2026-10-12T00:00:00Z"^^xsd:dateTime;
+  dcterms:modified "2026-10-12T00:00:00Z"^^xsd:dateTime;
+  dcat:theme <http://publications.europa.eu/resource/authority/data-theme/SOCI>;
+  dcat:contactPoint <mailto:d.j.actor@student.utwente.nl>;
+  dcat:keyword "population"@en, "city population"@en, "urban agglomeration"@en, "Benelux"@en,
+    "census"@en, "UN Statistics Division"@en;
+  dcat:landingPage <https://github.com/djactor/FAIRifaction-project>;
+  dcterms:creator <https://github.com/djactor>;
+  dcterms:spatial <http://www.wikidata.org/entity/Q31>, <http://www.wikidata.org/entity/Q55>,
+    <http://www.wikidata.org/entity/Q32>;
+  dcterms:temporal <http://reference.data.gov.uk/id/gregorian-interval/2000-01-01T00:00:00/P24Y>;
+  <http://www.w3.org/ns/prov#wasDerivedFrom> <https://datahub.io/core/population-city>;
+  dcterms:source <http://data.un.org/Data.aspx?d=POP&f=tableCode:240>;
+  dcterms:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG>;
+  dcat:distribution <http://localhost:8085/distribution/5748bbe9-b6f9-48cb-a912-6cd6ac041936>,
+    <http://localhost:8085/distribution/809d4354-3039-4025-a240-462fcb3df2b6> .
+
+<http://localhost:8085/dataset/62eb8b52-83e1-4c63-a51e-20bc2c0fed59#identifier> a
+    <http://purl.org/spar/datacite/Identifier>;
+  dcterms:identifier "http://localhost:8085/dataset/62eb8b52-83e1-4c63-a51e-20bc2c0fed59" .
+
+<http://localhost:8085/dataset/62eb8b52-83e1-4c63-a51e-20bc2c0fed59#accessRights>
+  a dcterms:RightsStatement;
+  dcterms:description "This resource has no access restriction" .
+
+<http://localhost:8085/dataset/62eb8b52-83e1-4c63-a51e-20bc2c0fed59/metrics/445c0a70d1e214e545b261559e2842f4>
+  <http://semanticscience.org/resource/SIO_000628> <https://www.ietf.org/rfc/rfc3986.txt>;
+  <http://semanticscience.org/resource/SIO_000332> <https://www.ietf.org/rfc/rfc3986.txt> .
+
+<http://localhost:8085/dataset/62eb8b52-83e1-4c63-a51e-20bc2c0fed59/metrics/5d27e854a9e78eb3f663331cd47cdc13>
+  <http://semanticscience.org/resource/SIO_000628> <https://www.wikidata.org/wiki/Q8777>;
+  <http://semanticscience.org/resource/SIO_000332> <https://www.wikidata.org/wiki/Q8777> .
+
+<http://localhost:8085/distribution/> a ldp:DirectContainer;
+  dcterms:title "Distributions";
+  ldp:membershipResource <http://localhost:8085/dataset/62eb8b52-83e1-4c63-a51e-20bc2c0fed59>;
+  ldp:hasMemberRelation dcat:distribution;
+  ldp:contains <http://localhost:8085/distribution/5748bbe9-b6f9-48cb-a912-6cd6ac041936>,
+    <http://localhost:8085/distribution/809d4354-3039-4025-a240-462fcb3df2b6> .
+
+<http://localhost:8085/profile/2f08228e-1789-40f8-84cd-28e3288c3604> <http://www.w3.org/2000/01/rdf-schema#label>
+    "Dataset Profile" .

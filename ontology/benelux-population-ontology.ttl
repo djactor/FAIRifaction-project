@@ -1,0 +1,194 @@
+@prefix :              <https://w3id.org/FAIR-course-UT/2026/group15/ont#> .
+@prefix ont:           <https://w3id.org/FAIR-course-UT/2026/group15/ont#> .
+@prefix owl:           <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:           <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:          <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:           <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:          <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct:           <http://purl.org/dc/terms/> .
+@prefix vann:          <http://purl.org/vocab/vann/> .
+@prefix schema:        <https://schema.org/> .
+@prefix qb:            <http://purl.org/linked-data/cube#> .
+@prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix sdmx-measure:  <http://purl.org/linked-data/sdmx/2009/measure#> .
+@prefix sdmx-attribute: <http://purl.org/linked-data/sdmx/2009/attribute#> .
+@prefix sdmx-code:     <http://purl.org/linked-data/sdmx/2009/code#> .
+@prefix wdt:           <http://www.wikidata.org/prop/direct/> .
+
+
+<https://w3id.org/FAIR-course-UT/2026/group15/ont>
+    a owl:Ontology ;
+    dct:title "Benelux City Population Ontology"@en ;
+    dct:description """Mini-ontology defining the concepts needed to represent the UN Statistics Division
+city population time series (subset: Belgium, the Netherlands and Luxembourg) as Linked Data.
+It specialises the W3C RDF Data Cube vocabulary (qb) and the SDMX-RDF concepts, and only defines
+concepts that could not be found in existing vocabularies (city type, record type, reliability,
+source year, footnote)."""@en ;
+    dct:creator "Group 15, FAIR Data Engineering 2025-2026, University of Twente"@en ;
+    dct:created "2026-10-12"^^xsd:date ;
+    dct:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+    vann:preferredNamespacePrefix "ont" ;
+    vann:preferredNamespaceUri "https://w3id.org/FAIR-course-UT/2026/group15/ont#" ;
+    owl:versionInfo "1.0.0" ;
+    rdfs:seeAlso <http://purl.org/linked-data/cube> .
+
+
+ont:PopulationObservation
+    a owl:Class ;
+    rdfs:subClassOf qb:Observation ;
+    rdfs:label "Population observation"@en ;
+    skos:definition "A single statistical observation of the number of inhabitants of a city (city proper or urban agglomeration) in a reference year, obtained from a census or an estimate. Each row of the source table is one population observation."@en .
+
+ont:City
+    a owl:Class ;
+    rdfs:subClassOf schema:City ;
+    rdfs:label "City"@en ;
+    skos:definition "A city or urban area for which the UN Statistics Division reports population figures, independent of the way its boundaries are drawn (see ont:CityType)."@en .
+
+ont:CityType
+    a owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "City type"@en ;
+    skos:definition "The way the boundaries of a city are defined for the purpose of counting its population."@en .
+
+ont:RecordType
+    a owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Record type"@en ;
+    skos:definition "The statistical method by which a population figure was obtained, e.g. a census or an estimate, together with the population concept used (de jure or de facto)."@en .
+
+ont:ReliabilityStatus
+    a owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Reliability status"@en ;
+    skos:definition "An indication, given by the UN Statistics Division, of whether a population figure is final and complete or still provisional."@en .
+
+ont:Footnote
+    a owl:Class ;
+    rdfs:label "Footnote"@en ;
+    skos:definition "An explanatory note from the data provider that qualifies how a population figure must be interpreted (e.g. which municipalities are included)."@en .
+
+
+ont:city
+    a owl:ObjectProperty, qb:DimensionProperty ;
+    rdfs:subPropertyOf sdmx-dimension:refArea ;
+    rdfs:label "city"@en ;
+    skos:definition "The city whose population is observed."@en ;
+    rdfs:domain ont:PopulationObservation ;
+    rdfs:range ont:City ;
+    qb:concept <http://purl.org/linked-data/sdmx/2009/concept#refArea> .
+
+ont:cityType
+    a owl:ObjectProperty, qb:DimensionProperty ;
+    rdfs:label "city type"@en ;
+    skos:definition "Whether the observed population refers to the city proper or to the urban agglomeration."@en ;
+    rdfs:domain ont:PopulationObservation ;
+    rdfs:range ont:CityType .
+
+ont:recordType
+    a owl:ObjectProperty, qb:DimensionProperty ;
+    rdfs:label "record type"@en ;
+    skos:definition "The statistical method (census or estimate) that produced the population figure."@en ;
+    rdfs:domain ont:PopulationObservation ;
+    rdfs:range ont:RecordType .
+
+ont:reliability
+    a owl:ObjectProperty, qb:AttributeProperty ;
+    rdfs:label "reliability"@en ;
+    skos:definition "The reliability status of the population figure."@en ;
+    rdfs:domain ont:PopulationObservation ;
+    rdfs:range ont:ReliabilityStatus ;
+    skos:closeMatch sdmx-attribute:obsStatus .
+
+ont:hasFootnote
+    a owl:ObjectProperty, qb:AttributeProperty ;
+    rdfs:label "has footnote"@en ;
+    skos:definition "Links a population observation to a footnote that qualifies it."@en ;
+    rdfs:domain ont:PopulationObservation ;
+    rdfs:range ont:Footnote .
+
+
+ont:population
+    a owl:DatatypeProperty, qb:MeasureProperty ;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:label "population"@en ;
+    skos:definition "The number of inhabitants (persons, both sexes) counted or estimated for the city in the reference year."@en ;
+    rdfs:range xsd:nonNegativeInteger ;
+    skos:closeMatch wdt:P1082 .
+
+ont:sourceYear
+    a owl:DatatypeProperty, qb:AttributeProperty ;
+    rdfs:label "source year"@en ;
+    skos:definition "The year in which the population figure was reported to (or published by) the UN Statistics Division. It may be later than the reference year."@en ;
+    rdfs:domain ont:PopulationObservation ;
+    rdfs:range xsd:gYear .
+
+ont:reportedCityName
+    a owl:DatatypeProperty ;
+    rdfs:label "reported city name"@en ;
+    skos:definition "The city name exactly as it appears in the source table, kept for provenance after the name was normalised and reconciled."@en ;
+    rdfs:domain ont:PopulationObservation ;
+    rdfs:range xsd:string .
+
+ont:qualityNote
+    a owl:AnnotationProperty ;
+    rdfs:subPropertyOf rdfs:comment ;
+    rdfs:label "quality note"@en ;
+    skos:definition "A remark added during FAIRification about a suspected problem in the source value. The value itself is never changed."@en .
+
+ont:m49Code
+    a owl:DatatypeProperty ;
+    rdfs:label "UN M49 code"@en ;
+    skos:definition "The three-digit numerical country code of the UN Standard Country or Area Codes for Statistical Use (M49)."@en ;
+    rdfs:range xsd:string .
+
+ont:iso3166Alpha3
+    a owl:DatatypeProperty ;
+    rdfs:label "ISO 3166-1 alpha-3 code"@en ;
+    rdfs:range xsd:string ;
+    skos:closeMatch wdt:P298 .
+
+
+ont:CityProper
+    a owl:NamedIndividual, ont:CityType ;
+    rdfs:label "City proper"@en ;
+    skos:prefLabel "City proper"@en ;
+    skos:notation "City proper" ;
+    skos:definition "A locality defined according to legal/political boundaries and an administratively recognised urban status, usually characterised by some form of local government (UN Demographic Yearbook definition)."@en .
+
+ont:UrbanAgglomeration
+    a owl:NamedIndividual, ont:CityType ;
+    rdfs:label "Urban agglomeration"@en ;
+    skos:prefLabel "Urban agglomeration"@en ;
+    skos:notation "Urban agglomeration" ;
+    skos:definition "The population contained within the contours of a contiguous territory inhabited at urban density levels without regard to administrative boundaries; it usually includes the city plus the adjacent suburban areas (UN Demographic Yearbook definition)."@en .
+
+ont:CensusDeJureCompleteTabulation
+    a owl:NamedIndividual, ont:RecordType ;
+    rdfs:label "Census - de jure - complete tabulation"@en ;
+    skos:prefLabel "Census - de jure - complete tabulation"@en ;
+    skos:notation "Census - de jure - complete tabulation" ;
+    skos:definition "Population counted in a full census, based on the usual residence of persons (de jure), with all census records tabulated."@en .
+
+ont:EstimateDeJure
+    a owl:NamedIndividual, ont:RecordType ;
+    rdfs:label "Estimate - de jure"@en ;
+    skos:prefLabel "Estimate - de jure"@en ;
+    skos:notation "Estimate - de jure" ;
+    skos:definition "Population estimated (e.g. from population registers or projections from a census), based on the usual residence of persons (de jure)."@en .
+
+ont:FinalFigureComplete
+    a owl:NamedIndividual, ont:ReliabilityStatus ;
+    rdfs:label "Final figure, complete"@en ;
+    skos:prefLabel "Final figure, complete"@en ;
+    skos:notation "Final figure, complete" ;
+    skos:definition "The figure is final and covers the complete population."@en ;
+    skos:closeMatch sdmx-code:obsStatus-A .
+
+ont:ProvisionalFigure
+    a owl:NamedIndividual, ont:ReliabilityStatus ;
+    rdfs:label "Provisional figure"@en ;
+    skos:prefLabel "Provisional figure"@en ;
+    skos:notation "Provisional figure" ;
+    skos:definition "The figure is provisional and may be revised later."@en ;
+    skos:closeMatch sdmx-code:obsStatus-P .

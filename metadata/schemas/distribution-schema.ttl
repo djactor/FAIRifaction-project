@@ -1,0 +1,77 @@
+@prefix :         <https://w3id.org/FAIR-course-UT/2026/group15/metadata-schema#> .
+@prefix sh:       <http://www.w3.org/ns/shacl#> .
+@prefix dash:     <http://datashapes.org/dash#> .
+@prefix dcat:     <http://www.w3.org/ns/dcat#> .
+@prefix dct:      <http://purl.org/dc/terms/> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+:DistributionShape a sh:NodeShape ;
+    sh:targetClass dcat:Distribution ;
+    sh:property [
+        sh:path dct:issued ;
+        sh:name "Issued" ;
+        sh:datatype xsd:dateTime ;
+        sh:maxCount 1 ;
+        dash:editor dash:DatePickerEditor ;
+        dash:viewer dash:LiteralViewer ;
+    ] , [
+        sh:path dct:modified ;
+        sh:name "Modified" ;
+        sh:datatype xsd:dateTime ;
+        sh:maxCount 1 ;
+        dash:editor dash:DatePickerEditor ;
+        dash:viewer dash:LiteralViewer ;
+    ] , [
+        sh:path dcat:downloadURL ;
+        sh:name "Download URL" ;
+        sh:description "W3ID identifier that resolves (redirects) to the downloadable file." ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:pattern "^https://w3id.org/FAIR-course-UT/" ;
+        sh:message "The download URL must be the group's W3ID identifier"@en ;
+        dash:editor dash:URIEditor ;
+        dash:viewer dash:URIViewer ;
+    ] , [
+        sh:path dcat:accessURL ;
+        sh:name "Access URL" ;
+        sh:description "Page where the file can be accessed (e.g. the folder in GitHub)." ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+        dash:editor dash:URIEditor ;
+        dash:viewer dash:URIViewer ;
+    ] , [
+        sh:path dcat:mediaType ;
+        sh:name "Media type" ;
+        sh:description "IANA media type of the file: text/csv or text/turtle." ;
+        sh:nodeKind sh:Literal ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in ( "text/csv" "text/turtle" ) ;
+        dash:editor dash:TextFieldEditor ;
+        dash:viewer dash:LiteralViewer ;
+    ] , [
+        sh:path dct:format ;
+        sh:name "Format" ;
+        sh:description "File format as an IRI of the EU File Type vocabulary (CSV or RDF_TURTLE)." ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        dash:editor dash:URIEditor ;
+        dash:viewer dash:LabelViewer ;
+    ] , [
+        sh:path dct:conformsTo ;
+        sh:name "Conforms to" ;
+        sh:description "Standard or model the file follows (RFC 4180 for CSV, our ontology for RDF)." ;
+        sh:nodeKind sh:IRI ;
+        dash:editor dash:URIEditor ;
+        dash:viewer dash:URIViewer ;
+    ] , [
+        sh:path dcat:byteSize ;
+        sh:name "Byte size" ;
+        sh:description "Size of the file in bytes." ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        dash:editor dash:TextFieldEditor ;
+        dash:viewer dash:LiteralViewer ;
+    ] .

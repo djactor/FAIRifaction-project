@@ -1,0 +1,19 @@
+# CQ2: How much did the population of each Dutch city proper grow between 2003 and 2015 (estimates)?
+PREFIX ont:  <https://w3id.org/FAIR-course-UT/2026/groupNN/ont#>
+PREFIX data: <https://w3id.org/FAIR-course-UT/2026/groupNN/data#>
+PREFIX qb:   <http://purl.org/linked-data/cube#>
+PREFIX sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#>
+PREFIX schema: <https://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?city ?pop2003 ?pop2015 (ROUND(1000 * (?pop2015 - ?pop2003) / ?pop2003) / 10 AS ?growthPercent)
+WHERE {
+  ?c a ont:City ; rdfs:label ?city ; schema:containedInPlace data:country-NLD .
+  ?o1 ont:city ?c ; ont:cityType ont:CityProper ; ont:recordType ont:EstimateDeJure ;
+      sdmx-dimension:refPeriod "2003"^^xsd:gYear ; ont:population ?pop2003 .
+  ?o2 ont:city ?c ; ont:cityType ont:CityProper ; ont:recordType ont:EstimateDeJure ;
+      sdmx-dimension:refPeriod "2015"^^xsd:gYear ; ont:population ?pop2015 .
+}
+ORDER BY DESC(?growthPercent)

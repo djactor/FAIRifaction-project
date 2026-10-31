@@ -1,0 +1,29 @@
+# LINKING POINT 1 (Wikidata) - data quality check
+# How do the UN figures compare with the current population recorded in Wikidata (P1082),
+# and with the coordinates (P625) of each city so that they can be put on a map?
+PREFIX ont:  <https://w3id.org/FAIR-course-UT/2026/groupNN/ont#>
+PREFIX data: <https://w3id.org/FAIR-course-UT/2026/groupNN/data#>
+PREFIX qb:   <http://purl.org/linked-data/cube#>
+PREFIX sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#>
+PREFIX schema: <https://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX wdt:  <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd:   <http://www.bigdata.com/rdf#>
+
+SELECT ?city ?unYear ?unPopulation ?wikidataPopulation ?coordinates
+WHERE {
+  {
+    SELECT ?city ?unYear ?unPopulation ?wd WHERE {
+      ?obs ont:city ?c ; ont:cityType ont:CityProper ; sdmx-dimension:refPeriod ?unYear ; ont:population ?unPopulation .
+      FILTER NOT EXISTS { ?n ont:city ?c ; ont:cityType ont:CityProper ; sdmx-dimension:refPeriod ?y2 . FILTER (xsd:integer(STR(?y2)) > xsd:integer(STR(?unYear))) }
+      ?c rdfs:label ?city ; owl:sameAs ?wd .
+    }
+  }
+  SERVICE <https://query.wikidata.org/sparql> {
+    ?wd wdt:P1082 ?wikidataPopulation .
+    OPTIONAL { ?wd wdt:P625 ?coordinates }
+  }
+}

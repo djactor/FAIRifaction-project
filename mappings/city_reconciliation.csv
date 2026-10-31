@@ -1,0 +1,49 @@
+source_name,city_id,canonical_name,label_nl,label_fr,label_en,country_iso3,wikidata_qid,qid_status,note
+Alkmaar,alkmaar,Alkmaar,Alkmaar,,Alkmaar,NLD,Q972,verified,
+Almere,almere,Almere,Almere,,Almere,NLD,Q83178,verified,
+Alphen aan den,alphen-aan-den-rijn,Alphen aan den Rijn,Alphen aan den Rijn,,Alphen aan den Rijn,NLD,Q213246,verified,Name truncated in source ('Alphen aan den'); restored to official municipality name
+Amersfoort,amersfoort,Amersfoort,Amersfoort,,Amersfoort,NLD,Q992,verified,
+AMSTERDAM,amsterdam,Amsterdam,Amsterdam,,Amsterdam,NLD,Q727,verified,Upper case in source marks the capital city (UN convention); normalised to title case
+Apeldoorn,apeldoorn,Apeldoorn,Apeldoorn,,Apeldoorn,NLD,Q101918,verified,
+Arnhem,arnhem,Arnhem,Arnhem,,Arnhem,NLD,Q1310,verified,
+Breda,breda,Breda,Breda,,Breda,NLD,Q40844,verified,
+Delft,delft,Delft,Delft,,Delft,NLD,Q690,verified,
+Deventer,deventer,Deventer,Deventer,,Deventer,NLD,Q10001,verified,
+Dordrecht,dordrecht,Dordrecht,Dordrecht,,Dordrecht,NLD,Q26421,verified,
+Ede,ede,Ede,Ede,,Ede,NLD,Q26555,verified,
+Eindhoven,eindhoven,Eindhoven,Eindhoven,,Eindhoven,NLD,Q9832,verified,
+Emmen,emmen,Emmen,Emmen,,Emmen,NLD,Q14641,verified,
+Enschede,enschede,Enschede,Enschede,,Enschede,NLD,Q10002,verified,
+Geleen-Sittard,sittard-geleen,Sittard-Geleen,Sittard-Geleen,,Sittard-Geleen,NLD,Q9781,verified,Same municipality as 'Sittard-Geleen'; merged
+Sittard-Geleen,sittard-geleen,Sittard-Geleen,Sittard-Geleen,,Sittard-Geleen,NLD,Q9781,verified,Same municipality as 'Geleen-Sittard'; merged
+Groningen,groningen,Groningen,Groningen,,Groningen,NLD,Q749,verified,
+Haarlem,haarlem,Haarlem,Haarlem,,Haarlem,NLD,Q9920,verified,
+Haarlemmermeer,haarlemmermeer,Haarlemmermeer,Haarlemmermeer,,Haarlemmermeer,NLD,Q9924,verified,
+Heerlen-Kerkrade,heerlen-kerkrade,Heerlen-Kerkrade,Heerlen-Kerkrade,,Heerlen-Kerkrade,NLD,,no_single_entity,Name of an urban agglomeration (two municipalities); no single Wikidata municipality
+Leeuwarden,leeuwarden,Leeuwarden,Leeuwarden,,Leeuwarden,NLD,Q2311189,verified,
+Leiden,leiden,Leiden,Leiden,,Leiden,NLD,Q43631,verified,
+Maastricht,maastricht,Maastricht,Maastricht,,Maastricht,NLD,Q1309,verified,
+Nijmegen,nijmegen,Nijmegen,Nijmegen,,Nijmegen,NLD,Q47887,verified,
+Nissewaard,nissewaard,Nissewaard,Nissewaard,,Nissewaard,NLD,Q14853527,verified,
+Rotterdam,rotterdam,Rotterdam,Rotterdam,,Rotterdam,NLD,Q34370,verified,
+s-Gravenhage,the-hague,The Hague,'s-Gravenhage,La Haye,The Hague,NLD,Q36600,verified,Apostrophe lost in source; same city as 'The Hague'; merged
+The Hague,the-hague,The Hague,'s-Gravenhage,La Haye,The Hague,NLD,Q36600,verified,Same city as 's-Gravenhage'; merged
+s-Hertogenbosch,s-hertogenbosch,'s-Hertogenbosch,'s-Hertogenbosch,Bois-le-Duc,'s-Hertogenbosch,NLD,Q9807,verified,Apostrophe lost in source; restored
+Tilburg,tilburg,Tilburg,Tilburg,,Tilburg,NLD,Q9871,verified,
+Utrecht,utrecht,Utrecht,Utrecht,,Utrecht,NLD,Q803,verified,
+Venlo,venlo,Venlo,Venlo,,Venlo,NLD,Q9777,verified,
+Westland,westland,Westland,Westland,,Westland,NLD,Q26556,verified,
+Zaanstad,zaanstad,Zaanstad,Zaanstad,,Zaanstad,NLD,Q9978,verified,
+Zoetermeer,zoetermeer,Zoetermeer,Zoetermeer,,Zoetermeer,NLD,Q26432,verified,
+Zwolle,zwolle,Zwolle,Zwolle,,Zwolle,NLD,Q793,verified,
+Anderlecht,anderlecht,Anderlecht,Anderlecht,Anderlecht,Anderlecht,BEL,Q12886,verified,
+Antwerpen (Anvers),antwerpen,Antwerpen,Antwerpen,Anvers,Antwerp,BEL,Q12892,verified,Bilingual name 'Dutch (French)' split into language-tagged labels
+Brugge,brugge,Brugge,Brugge,Bruges,Bruges,BEL,Q12994,verified,
+BRUXELLES (BRUSSEL),brussels,Brussels,Brussel,Bruxelles,Brussels,BEL,Q239,verified,Upper case marks the capital; bilingual name split; City proper = City of Brussels (Q239)
+Charleroi,charleroi,Charleroi,,Charleroi,Charleroi,BEL,Q81046,verified,
+Gent (Gand),gent,Gent,Gent,Gand,Ghent,BEL,Q1296,verified,Bilingual name split
+Liège (Luik),liege,Liège,Luik,Liège,Liège,BEL,Q3992,verified,Bilingual name 'French (Dutch)' split
+Louvain (Leuven),leuven,Leuven,Leuven,Louvain,Leuven,BEL,Q118958,verified,Source puts the French name first although Leuven is in Flanders; official (Dutch) name used as canonical
+Namur,namur,Namur,Namen,Namur,Namur,BEL,Q134121,verified,
+Schaerbeek,schaerbeek,Schaerbeek,Schaarbeek,Schaerbeek,Schaerbeek,BEL,Q12887,verified,
+LUXEMBOURG-VILLE,luxembourg-city,Luxembourg City,,Luxembourg-Ville,Luxembourg City,LUX,Q1842,verified,Upper case marks the capital; '-VILLE' distinguishes the city from the country

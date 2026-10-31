@@ -1,0 +1,31 @@
+# LINKING POINT 1 (Wikidata) - aggregation along an administrative hierarchy we do not have
+# What is the total city-proper population per province (P131) in the 2011 census?
+PREFIX ont:  <https://w3id.org/FAIR-course-UT/2026/groupNN/ont#>
+PREFIX data: <https://w3id.org/FAIR-course-UT/2026/groupNN/data#>
+PREFIX qb:   <http://purl.org/linked-data/cube#>
+PREFIX sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#>
+PREFIX schema: <https://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX wdt:  <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd:   <http://www.bigdata.com/rdf#>
+
+SELECT ?provinceLabel (SUM(?population) AS ?totalCityPopulation) (COUNT(?c) AS ?cities)
+WHERE {
+  { SELECT DISTINCT ?c ?population ?provinceLabel WHERE {
+      ?obs ont:city ?c ; ont:cityType ont:CityProper ; ont:recordType ont:CensusDeJureCompleteTabulation ;
+           sdmx-dimension:refPeriod "2011"^^xsd:gYear ; ont:population ?population .
+      ?c owl:sameAs ?wd .
+      SERVICE <https://query.wikidata.org/sparql> {
+        ?wd wdt:P131/wdt:P131?/wdt:P131? ?province .   # city > municipality > arrondissement > province (bounded: P131+ times out on Wikidata)
+        ?province wdt:P31 ?type .
+        VALUES ?type { <http://www.wikidata.org/entity/Q134390> <http://www.wikidata.org/entity/Q83116> }
+        ?province <http://www.w3.org/2000/01/rdf-schema#label> ?provinceLabel .
+        FILTER (LANG(?provinceLabel) = "en")
+      }
+  } }
+}
+GROUP BY ?provinceLabel
+ORDER BY DESC(?totalCityPopulation)

@@ -1,0 +1,5 @@
+observation_id,quality_note
+observation-235,"Suspected error in the source: the 2011 census value for Zaanstad (190655) is identical to the value for Almere in the same census, while all other Zaanstad figures are 139000-152000. Value kept unchanged because it is the official UN figure."
+observation-164,"Possible classification error in the source: Zaanstad is reported as an urban agglomeration only in 2023, while all earlier figures are city proper; the value (159618) is in line with the city-proper series."
+observation-1,"The 2023 urban agglomeration figure for Antwerpen (541122) is close to its city-proper figures and about half of the 2021 census agglomeration figure (1148671); the agglomeration boundary used in this source year is probably different."
+observation-3,"The 2023 urban agglomeration figure for Brussels (1253178) corresponds to the Brussels-Capital Region rather than to the wider agglomeration reported in the 2021 census (3322650)."

@@ -1,0 +1,21 @@
+# CQ3: For each country, what is the most recent city-proper figure of every city, and which source year reported it?
+PREFIX ont:  <https://w3id.org/FAIR-course-UT/2026/groupNN/ont#>
+PREFIX data: <https://w3id.org/FAIR-course-UT/2026/groupNN/data#>
+PREFIX qb:   <http://purl.org/linked-data/cube#>
+PREFIX sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#>
+PREFIX schema: <https://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?country ?city ?year ?sourceYear ?population
+WHERE {
+  ?obs ont:city ?c ; ont:cityType ont:CityProper ;
+       sdmx-dimension:refPeriod ?year ; ont:sourceYear ?sourceYear ; ont:population ?population .
+  ?c rdfs:label ?city ; schema:containedInPlace/rdfs:label ?country .
+  FILTER NOT EXISTS {
+    ?newer ont:city ?c ; ont:cityType ont:CityProper ; sdmx-dimension:refPeriod ?y2 .
+    FILTER (xsd:integer(STR(?y2)) > xsd:integer(STR(?year)))
+  }
+}
+ORDER BY ?country DESC(?population)

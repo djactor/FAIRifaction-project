@@ -1,0 +1,4 @@
+source_name,iso3,m49_code,label_en,wikidata_qid,geonames_id,note
+Belgium,BEL,056,Belgium,Q31,2802361,
+Netherlands (Kingdom of the),NLD,528,Netherlands,Q55,2750405,UN M49 name is 'Netherlands (Kingdom of the)'; all cities lie in the European Netherlands (constituent country Q55) so Q55 is used rather than the Kingdom (Q29999)
+Luxembourg,LUX,442,Luxembourg,Q32,2960313,

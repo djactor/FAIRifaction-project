@@ -1,0 +1,54 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+
+<http://localhost:8085> a dcat:Resource, dcat:DataService, <https://w3id.org/fdp/fdp-o#MetadataService>,
+    <https://w3id.org/fdp/fdp-o#FAIRDataPoint>;
+  <http://www.w3.org/2000/01/rdf-schema#label> "FAIR Data Point of Group 15";
+  dcterms:title "FAIR Data Point of Group 15";
+  dcat:version "1.0";
+  <https://w3id.org/fdp/fdp-o#metadataIssued> "2026-10-12T01:29:22.552604728Z"^^xsd:dateTime;
+  <https://w3id.org/fdp/fdp-o#metadataModified> "2026-10-31T16:24:21.809035321Z"^^xsd:dateTime;
+  dcterms:license <http://purl.org/NET/rdflicense/cc-zero1.0>;
+  dcterms:description "Local FAIR Data Point of group 15 (University of Twente, FAIR Data Engineering 2026-2027). It publishes the DCAT metadata of the FAIRified Benelux city population dataset (UN Statistics Division, 2000-2023) and its two distributions: the original CSV and the RDF version.";
+  dcterms:conformsTo <http://localhost:8085/profile/77aaad6a-0136-4c6e-88b9-07ffccd0ee4c>,
+    <http://localhost:8085/profile/77aaad6a-0136-4c6e-88b9-07ffccd0ee4c>;
+  dcterms:language <http://id.loc.gov/vocabulary/iso639-1/en>;
+  <https://w3id.org/fdp/fdp-o#metadataIdentifier> <http://localhost:8085#identifier>;
+  <http://www.re3data.org/schema/3-0#repositoryIdentifier> <http://localhost:8085#identifier>;
+  dcterms:accessRights <http://localhost:8085#accessRights>;
+  dcterms:publisher <https://www.utwente.nl/>;
+  <http://semanticscience.org/resource/SIO_000628> <http://localhost:8085/metrics/445c0a70d1e214e545b261559e2842f4>,
+    <http://localhost:8085/metrics/5d27e854a9e78eb3f663331cd47cdc13>;
+  <https://w3id.org/fdp/fdp-o#metadataCatalog> <http://localhost:8085/catalog/bb28d837-e0b8-495a-abee-e4d215afda32>;
+  dcat:endpointURL <http://localhost:8085>, <http://localhost:8085>;
+  <https://w3id.org/fdp/fdp-o#fdpSoftwareVersion> "FDP:v1.18.2~0cba71a", "FDP:v1.18.2~0cba71a" .
+
+<http://localhost:8085#identifier> a <http://purl.org/spar/datacite/Identifier>;
+  dcterms:identifier "http://localhost:8085" .
+
+<http://localhost:8085#accessRights> a dcterms:RightsStatement;
+  dcterms:description "This resource has no access restriction" .
+
+<https://www.utwente.nl/> a foaf:Agent;
+  foaf:name "University of Twente" .
+
+<http://localhost:8085/catalog/> a ldp:DirectContainer, ldp:DirectContainer;
+  dcterms:title "Catalogs", "Catalogs";
+  ldp:contains <http://localhost:8085/catalog/bb28d837-e0b8-495a-abee-e4d215afda32>,
+    <http://localhost:8085/catalog/bb28d837-e0b8-495a-abee-e4d215afda32>;
+  ldp:hasMemberRelation <https://w3id.org/fdp/fdp-o#metadataCatalog>, <https://w3id.org/fdp/fdp-o#metadataCatalog>;
+  ldp:membershipResource <http://localhost:8085>, <http://localhost:8085> .
+
+<http://localhost:8085/profile/77aaad6a-0136-4c6e-88b9-07ffccd0ee4c> <http://www.w3.org/2000/01/rdf-schema#label>
+    "FAIR Data Point Profile", "FAIR Data Point Profile" .
+
+<http://localhost:8085/metrics/445c0a70d1e214e545b261559e2842f4> <http://semanticscience.org/resource/SIO_000628>
+    <https://www.ietf.org/rfc/rfc3986.txt>;
+  <http://semanticscience.org/resource/SIO_000332> <https://www.ietf.org/rfc/rfc3986.txt> .
+
+<http://localhost:8085/metrics/5d27e854a9e78eb3f663331cd47cdc13> <http://semanticscience.org/resource/SIO_000628>
+    <https://www.wikidata.org/wiki/Q8777>;
+  <http://semanticscience.org/resource/SIO_000332> <https://www.wikidata.org/wiki/Q8777> .
